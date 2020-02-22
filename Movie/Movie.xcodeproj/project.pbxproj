@@ -15,6 +15,11 @@
 		DC0373432400BC1F000181BE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DC0373412400BC1F000181BE /* LaunchScreen.storyboard */; };
 		DC03734E2400BC1F000181BE /* MovieTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC03734D2400BC1F000181BE /* MovieTests.swift */; };
 		DC0373592400BC1F000181BE /* MovieUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0373582400BC1F000181BE /* MovieUITests.swift */; };
+		DC0373682401D110000181BE /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0373672401D110000181BE /* EndPoint.swift */; };
+		DC03736A2401D2CE000181BE /* FetchMovieGroups.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0373692401D2CE000181BE /* FetchMovieGroups.swift */; };
+		DC03736D2401D345000181BE /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC03736C2401D345000181BE /* Constants.swift */; };
+		DC03736F2401D56F000181BE /* GetMovieDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC03736E2401D56F000181BE /* GetMovieDetail.swift */; };
+		DC0373712401D5E7000181BE /* DiscoverPopular.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0373702401D5E7000181BE /* DiscoverPopular.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +54,11 @@
 		DC0373542400BC1F000181BE /* MovieUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MovieUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC0373582400BC1F000181BE /* MovieUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieUITests.swift; sourceTree = "<group>"; };
 		DC03735A2400BC1F000181BE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DC0373672401D110000181BE /* EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
+		DC0373692401D2CE000181BE /* FetchMovieGroups.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchMovieGroups.swift; sourceTree = "<group>"; };
+		DC03736C2401D345000181BE /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		DC03736E2401D56F000181BE /* GetMovieDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetMovieDetail.swift; sourceTree = "<group>"; };
+		DC0373702401D5E7000181BE /* DiscoverPopular.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverPopular.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +109,8 @@
 		DC0373342400BC1E000181BE /* Movie */ = {
 			isa = PBXGroup;
 			children = (
+				DC03736B2401D318000181BE /* Constants */,
+				DC0373662401D0E8000181BE /* EndPoints */,
 				DC0373352400BC1F000181BE /* AppDelegate.swift */,
 				DC0373372400BC1F000181BE /* ViewController.swift */,
 				DC0373392400BC1F000181BE /* Main.storyboard */,
@@ -126,6 +138,25 @@
 				DC03735A2400BC1F000181BE /* Info.plist */,
 			);
 			path = MovieUITests;
+			sourceTree = "<group>";
+		};
+		DC0373662401D0E8000181BE /* EndPoints */ = {
+			isa = PBXGroup;
+			children = (
+				DC0373672401D110000181BE /* EndPoint.swift */,
+				DC0373692401D2CE000181BE /* FetchMovieGroups.swift */,
+				DC03736E2401D56F000181BE /* GetMovieDetail.swift */,
+				DC0373702401D5E7000181BE /* DiscoverPopular.swift */,
+			);
+			path = EndPoints;
+			sourceTree = "<group>";
+		};
+		DC03736B2401D318000181BE /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				DC03736C2401D345000181BE /* Constants.swift */,
+			);
+			path = Constants;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -261,7 +292,12 @@
 			files = (
 				DC0373382400BC1F000181BE /* ViewController.swift in Sources */,
 				DC03733E2400BC1F000181BE /* Movie.xcdatamodeld in Sources */,
+				DC0373712401D5E7000181BE /* DiscoverPopular.swift in Sources */,
+				DC0373682401D110000181BE /* EndPoint.swift in Sources */,
+				DC03736F2401D56F000181BE /* GetMovieDetail.swift in Sources */,
+				DC03736A2401D2CE000181BE /* FetchMovieGroups.swift in Sources */,
 				DC0373362400BC1F000181BE /* AppDelegate.swift in Sources */,
+				DC03736D2401D345000181BE /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

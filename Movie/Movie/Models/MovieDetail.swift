@@ -9,5 +9,11 @@
 import Foundation
 
 struct MovieDetail {
-    
+    var imageURL: String
+    var details: [MovieInfoPair]
+}
+
+struct MovieInfoPair {
+    var infoType: String
+    var content: String
 }

@@ -13,7 +13,7 @@ class GetMovieDetail: EndPoint {
     let movieID: String
     let languageType: LanguageType
     
-    public init(movieID: String, languageType: LanguageType) {
+    public init(movieID: String, languageType: LanguageType = .english) {
         self.movieID = movieID
         self.languageType = languageType
     }

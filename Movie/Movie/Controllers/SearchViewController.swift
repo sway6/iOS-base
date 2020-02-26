@@ -41,6 +41,10 @@ extension SearchViewController: UISearchBarDelegate {
 }
 
 extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 80
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.numberOfMovies()
     }
@@ -54,8 +58,13 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 80
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let movie = viewModel.getMovie(at: indexPath) else {
+            return
+        }
+        let detailViewModel = MovieDetailViewModel(movie: movie)
+        let controller = MovieDetailViewController(viewModel: detailViewModel)
+        self.present(controller, animated: true, completion: nil)
     }
 }
 

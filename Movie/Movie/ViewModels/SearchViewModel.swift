@@ -51,9 +51,9 @@ class SearchViewModel {
                           return
                     }
                     jsonArray.forEach {
-                        let id = $0["id"] as? String ?? ""
+                        let id = $0["id"] as? Int ?? 0
                         let title = $0["name"] as? String ?? ""
-                        self.movies.append(Movie(id: id, title: title))
+                        self.movies.append(Movie(id: "\(id)", title: title))
                     }
                 }
                 

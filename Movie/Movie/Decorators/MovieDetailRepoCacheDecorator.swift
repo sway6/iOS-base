@@ -32,6 +32,7 @@ class MovieDetailRepoCacheDecorator: MovieDetailDecorator {
             }
         }
         
+        print("hit movie detail cache")
         completion(cachedMovieDetail)
     }
     

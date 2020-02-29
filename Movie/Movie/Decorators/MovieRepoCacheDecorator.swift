@@ -31,7 +31,7 @@ class MovieRepoCacheDecorator: MovieDecorator {
                 completion(movieGroups)
             }
         }
-        
+        print("hit movie cache")
         completion(cachedMovie)
     }
 }

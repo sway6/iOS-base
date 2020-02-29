@@ -12,7 +12,7 @@ import Foundation
 class SearchViewController: UIViewController {
     @IBOutlet weak var searchBox: UISearchBar!
     @IBOutlet weak var movieTableView: UITableView!
-    private var viewModel = SearchViewModel()
+    private var viewModel = SearchViewModel(movieDetailCache: MovieDetailDefaultCache())
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -62,7 +62,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         guard let movie = viewModel.getMovie(at: indexPath) else {
             return
         }
-        let detailViewModel = MovieDetailViewModel(movie: movie)
+        let detailViewModel = MovieDetailViewModel(movie: movie, movieDetailCache: viewModel.getMovieDetailsCache())
         let controller = MovieDetailViewController(viewModel: detailViewModel)
         self.present(controller, animated: true, completion: nil)
     }

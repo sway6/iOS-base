@@ -8,12 +8,6 @@
 
 import Foundation
 
-protocol MovieDecorator {
+protocol MovieDecorator: MovieRepository {
     var inner: MovieRepository { get }
-}
-
-extension MovieDecorator {
-    func get(identifier: String, completion: ([Movie]) -> Void) {
-        inner.get(identifier: identifier, completion: completion)
-    }
 }

@@ -10,5 +10,5 @@ import Foundation
 
 protocol MovieDetailRepository {
     func getAll() -> [MovieDetail]
-    func get(identifier: Int, completion: ([MovieDetail]) -> Void)
+    func get(identifier: String, completion: @escaping (MovieDetail) -> Void)
 }

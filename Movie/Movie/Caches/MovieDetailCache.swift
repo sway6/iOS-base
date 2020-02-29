@@ -9,6 +9,6 @@
 import Foundation
 
 protocol MovieDetailCache {
-    func get(id: Int) -> MovieDetail?
-    func store(content: MovieDetail, for id: Int) -> Bool
+    func get(id: String) -> MovieDetail?
+    func store(content: MovieDetail, for id: String)
 }

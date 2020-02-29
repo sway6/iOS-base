@@ -8,13 +8,30 @@
 
 import Foundation
 
-protocol MovieRepoCacheDecorator: MovieDecorator {
-    var inner: MovieRepository { get }
-    var cache: MovieCache { get }
-}
-
-extension MovieRepoCacheDecorator {
-    func get(identifier: String, completion: ([Movie]) -> Void) {
-        inner.get(identifier: identifier, completion: completion)
+class MovieRepoCacheDecorator: MovieDecorator {
+    var inner: MovieRepository
+    var cache: MovieCache
+    
+    init(inner: MovieRepository, cache: MovieCache) {
+        self.inner = inner
+        self.cache = cache
+    }
+    
+    func getAll() -> [Movie] {
+        return []
+    }
+    
+    func get(identifier: String, completion: @escaping ([Movie]) -> Void) {
+        guard let cachedMovie = cache.get(id: identifier) else {
+            return inner.get(identifier: identifier) { [weak self] movieGroups in
+                guard let self = self else {
+                    return
+                }
+                self.cache.store(content: movieGroups, for: identifier)
+                completion(movieGroups)
+            }
+        }
+        
+        completion(cachedMovie)
     }
 }

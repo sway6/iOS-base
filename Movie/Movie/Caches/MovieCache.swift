@@ -10,5 +10,5 @@ import Foundation
 
 protocol MovieCache {
     func get(id: String) -> [Movie]?
-    func store(content: [Movie], for id: String) -> Bool
+    func store(content: [Movie], for id: String)
 }

@@ -8,11 +8,13 @@
 
 import Foundation
 import Alamofire
+import RxSwift
 
 class SearchViewModel {
     weak var delegate: SearchViewModelDelegate?
     var movies = [Movie]()
     var movieDetailCache: MovieDetailCache
+    let disposeBag = DisposeBag()
     
     lazy var movieRepo: MovieRepository = {
         let repo = MovieDefaultRepository()
@@ -36,19 +38,19 @@ class SearchViewModel {
     }
     
     func searchMovie(by keyword: String) {
-        movieRepo.get(identifier: keyword) { [weak self] movieGroup in
-            guard let self = self else {
-                return
-            }
-            self.movies = movieGroup
-            
-            DispatchQueue.main.async {
-                guard let delegate = self.delegate else {
-                    return
-                }
-                delegate.onMovieLoadComplete()
-            }
-        }
+        movieRepo.get(identifier: keyword)
+            .observeOn(MainScheduler.instance)
+            .subscribe(
+                onSuccess: { [weak self] bunchOfMovies in
+                    guard let self = self else { return }
+                    guard let delegate = self.delegate else { return }
+                    self.movies = bunchOfMovies
+                    delegate.onMovieLoadComplete()
+                },
+                onError: { _ in
+                    print("search keyword faild on searchViewModel")
+                })
+        .disposed(by: disposeBag)
     }
     
     func getMovieDetailsCache() -> MovieDetailCache {

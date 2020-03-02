@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import RxSwift
 
 class MovieRepoCacheDecorator: MovieDecorator {
     var inner: MovieRepository
@@ -21,17 +22,17 @@ class MovieRepoCacheDecorator: MovieDecorator {
         return []
     }
     
-    func get(identifier: String, completion: @escaping ([Movie]) -> Void) {
-        guard let cachedMovie = cache.get(id: identifier) else {
-            return inner.get(identifier: identifier) { [weak self] movieGroups in
-                guard let self = self else {
-                    return
-                }
-                self.cache.store(content: movieGroups, for: identifier)
-                completion(movieGroups)
-            }
+    func get(identifier: String) -> Single<[Movie]> {
+        if cache.isCacheValid(for: identifier) {
+            return cache.get(id: identifier)
+        } else {
+            return inner.get(identifier: identifier)
+                .do(onSuccess:{ [weak self] bunchOfMovies in
+                    guard let self = self else {
+                        return
+                    }
+                    self.cache.store(content: bunchOfMovies, for: identifier)
+                })
         }
-        print("hit movie cache")
-        completion(cachedMovie)
     }
 }

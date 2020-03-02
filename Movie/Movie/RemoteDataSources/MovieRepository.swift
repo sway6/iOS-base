@@ -7,8 +7,10 @@
 //
 
 import Foundation
+import RxSwift
+import RxCocoa
 
 protocol MovieRepository {
     func getAll() -> [Movie]
-    func get(identifier: String, completion: @escaping ([Movie]) -> Void)
+    func get(identifier: String) -> Single<[Movie]>
 }

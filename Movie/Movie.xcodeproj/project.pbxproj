@@ -196,8 +196,8 @@
 			isa = PBXGroup;
 			children = (
 				DC65A1092409F4F5000C73E8 /* Decorators */,
-				DC65A1022409F174000C73E8 /* Caches */,
-				DC65A0F92409ECAD000C73E8 /* Repos */,
+				DC65A1022409F174000C73E8 /* localDataSources */,
+				DC65A0F92409ECAD000C73E8 /* RemoteDataSources */,
 				DC77D6F32406091500A98E78 /* Extensions */,
 				DC77D6D92404BF7D00A98E78 /* TableViewCells */,
 				DC77D6D22404B20A00A98E78 /* Models */,
@@ -256,7 +256,7 @@
 			path = Constants;
 			sourceTree = "<group>";
 		};
-		DC65A0F92409ECAD000C73E8 /* Repos */ = {
+		DC65A0F92409ECAD000C73E8 /* RemoteDataSources */ = {
 			isa = PBXGroup;
 			children = (
 				DC65A0FC2409EE7D000C73E8 /* MovieRepository.swift */,
@@ -264,10 +264,10 @@
 				DC65A112240AAB36000C73E8 /* MovieDefaultRepository.swift */,
 				DC65A114240AAB50000C73E8 /* MovieDetailDefaultRepository.swift */,
 			);
-			path = Repos;
+			path = RemoteDataSources;
 			sourceTree = "<group>";
 		};
-		DC65A1022409F174000C73E8 /* Caches */ = {
+		DC65A1022409F174000C73E8 /* localDataSources */ = {
 			isa = PBXGroup;
 			children = (
 				DC65A1052409F259000C73E8 /* MovieCache.swift */,
@@ -275,7 +275,7 @@
 				DC65A11A240AB313000C73E8 /* MovieDefaultCache.swift */,
 				DC65A11C240AB3B1000C73E8 /* MovieDetailDefaultCache.swift */,
 			);
-			path = Caches;
+			path = localDataSources;
 			sourceTree = "<group>";
 		};
 		DC65A1092409F4F5000C73E8 /* Decorators */ = {

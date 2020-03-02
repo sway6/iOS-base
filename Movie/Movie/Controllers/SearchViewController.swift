@@ -12,7 +12,7 @@ import Foundation
 class SearchViewController: UIViewController {
     @IBOutlet weak var searchBox: UISearchBar!
     @IBOutlet weak var movieTableView: UITableView!
-    private var viewModel = SearchViewModel(movieDetailCache: MovieDetailDefaultCache())
+    private var viewModel = SearchViewModel(movieDetailCache: MovieDetailDefaultLocalDataSource())
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)

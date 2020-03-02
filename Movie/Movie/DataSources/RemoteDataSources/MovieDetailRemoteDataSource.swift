@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol MovieDetailRepository {
+protocol MovieDetailRemoteDataSource {
     func getAll() -> [MovieDetail]
     func get(identifier: String, completion: @escaping (MovieDetail) -> Void)
 }

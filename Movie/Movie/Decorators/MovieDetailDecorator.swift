@@ -8,6 +8,6 @@
 
 import Foundation
 
-protocol MovieDetailDecorator: MovieDetailRepository {
-    var inner: MovieDetailRepository { get }
+protocol MovieDetailDecorator: MovieDetailRemoteDataSource {
+    var remoteDataSource: MovieDetailRemoteDataSource { get }
 }

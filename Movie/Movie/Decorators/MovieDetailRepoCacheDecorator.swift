@@ -9,12 +9,12 @@
 import Foundation
 
 class MovieDetailRepoCacheDecorator: MovieDetailDecorator {
-    var cache: MovieDetailCache
-    var inner: MovieDetailRepository
+    var remoteDataSource: MovieDetailRemoteDataSource
+    var localDataSource: MovieDetailLocalDataSource
     
-    init(inner: MovieDetailRepository, cache: MovieDetailCache) {
-        self.inner = inner
-        self.cache = cache
+    init(remoteDataSource: MovieDetailRemoteDataSource, cache: MovieDetailLocalDataSource) {
+        self.remoteDataSource = remoteDataSource
+        self.localDataSource = cache
     }
     
     func getAll() -> [MovieDetail] {
@@ -22,12 +22,12 @@ class MovieDetailRepoCacheDecorator: MovieDetailDecorator {
     }
     
     func get(identifier: String, completion: @escaping (MovieDetail) -> Void) {
-        guard let cachedMovieDetail = cache.get(id: identifier) else {
-            return inner.get(identifier: identifier) { [weak self] movieDetail in
+        guard let cachedMovieDetail = localDataSource.get(id: identifier) else {
+            return remoteDataSource.get(identifier: identifier) { [weak self] movieDetail in
                 guard let self = self else {
                     return
                 }
-                self.cache.store(content: movieDetail, for: identifier)
+                self.localDataSource.store(content: movieDetail, for: identifier)
                 completion(movieDetail)
             }
         }

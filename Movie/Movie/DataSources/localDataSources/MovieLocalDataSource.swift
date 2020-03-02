@@ -9,7 +9,7 @@
 import Foundation
 import RxSwift
 
-protocol MovieCache {
+protocol MovieLocalDataSource {
     func get(id: String) -> Single<[Movie]>
     func store(content: [Movie], for id: String)
     func isCacheValid(for id: String) -> Bool

@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol MovieDetailCache {
+protocol MovieDetailLocalDataSource {
     func get(id: String) -> MovieDetail?
     func store(content: MovieDetail, for id: String)
 }

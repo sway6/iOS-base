@@ -16,7 +16,7 @@ class MovieDetailDefaultRepository: MovieDetailRepository {
     
     func get(identifier: String, completion: @escaping (MovieDetail) -> Void) {
         let movieDetailEndPoint = GetMovieDetail(movieID: identifier)
-        var movieDetail = MovieDetail(imageURL: "", details: [])
+        var movieDetail = MovieDetail()
         
         AF.request(movieDetailEndPoint.getPath(), method: .get)
             .responseJSON  { [weak self] response in
@@ -32,27 +32,11 @@ class MovieDetailDefaultRepository: MovieDetailRepository {
                     }
                 }
                 // decode JSON value
-                if let result = response.value {
-                    guard let jsonDict = result as? NSDictionary else {
-                        return
-                    }
-                    
-                    if let imageURL = jsonDict["poster_path"] as? String {
-                        movieDetail.imageURL = "\(Constants.imagePrefix)\(imageURL)"
-                    } else {
-                        movieDetail.imageURL = "https://image.tmdb.org/t/p/w500/rb5HHy0J4yZYlBA1tqL1akWo6WQ.jpg"
-                    }
-                    if let language = jsonDict["original_language"] as? String {
-                        movieDetail.details.append(MovieInfoPair(infoType: "Language: ", content: language))
-                    }
-                    if let title = jsonDict["original_title"] as? String {
-                        movieDetail.details.append(MovieInfoPair(infoType: "Title: ", content: title))
-                    }
-                    if let date = jsonDict["release_date"] as? String {
-                        movieDetail.details.append(MovieInfoPair(infoType: "Date: ", content: date))
-                    }
-                    if let overview = jsonDict["overview"] as? String {
-                        movieDetail.details.append(MovieInfoPair(infoType: "Overview: ", content: overview))
+                if let jsonData = response.data {
+                    do {
+                        movieDetail = try JSONDecoder().decode(MovieDetail.self, from: jsonData)
+                    } catch {
+                        print("fail to decode MivesDetail from http response")
                     }
                 }
                 

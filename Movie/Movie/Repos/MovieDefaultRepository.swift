@@ -32,13 +32,15 @@ class MovieDefaultRepository: MovieRepository {
                 // decode JSON value
                 if let result = response.value {
                     let jsonDict = result as! NSDictionary
-                    guard let jsonArray = jsonDict["results"] as? [[String: Any]] else {
+                    guard let jsonArray = jsonDict["results"] as? NSArray else {
                         return
                     }
-                    jsonArray.forEach {
-                        let id = $0["id"] as? Int ?? 0
-                        let title = $0["name"] as? String ?? ""
-                        bunchOfMovies.append(Movie(id: "\(id)", title: title))
+                    
+                    do {
+                        let jsonData = try JSONSerialization.data(withJSONObject: jsonArray, options: [])
+                        bunchOfMovies = try JSONDecoder().decode([Movie].self, from: jsonData)
+                    } catch {
+                        print("fail to decode Mives from http response")
                     }
                 }
                 

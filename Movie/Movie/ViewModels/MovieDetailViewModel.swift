@@ -8,6 +8,8 @@
 
 import Foundation
 import Alamofire
+import RxSwift
+import RxCocoa
 
 class MovieDetailViewModel {
     weak var delegate: MovieDetailViewModelDelegate?
@@ -22,12 +24,12 @@ class MovieDetailViewModel {
     
     init(movie: Movie, movieDetailCache: MovieDetailCache) {
         self.movie = movie
-        self.movieDetail = MovieDetail(imageURL: "", details: [])
+        self.movieDetail = MovieDetail()
         movieDetailRepo.cache = movieDetailCache
     }
     
     func movieAvatar() -> URL? {
-         return URL(string: movieDetail.imageURL)
+         return URL(string: movieDetail.imageURL ?? "")
     }
     
     func numberOfInfoDetails() -> Int {
@@ -43,7 +45,7 @@ class MovieDetailViewModel {
     }
     
     func fetchMovieDetail() {
-        movieDetailRepo.get(identifier: movie.id) { [weak self] movieDetail in
+        movieDetailRepo.get(identifier: "\(movie.id)") { [weak self] movieDetail in
             guard let self = self else {
                 return
             }

@@ -17,19 +17,19 @@ class MovieDetailViewModel {
     private var movieDetail: MovieDetail
     
     lazy var movieDetailRepo: MovieDetailRepoCacheDecorator = {
-        let repo = MovieDetailDefaultRepository()
-        let cache = MovieDetailDefaultCache()
-        return MovieDetailRepoCacheDecorator(inner: repo, cache: cache)
+        let repo = MovieDetailDefaultRemoteDataSource()
+        let cache = MovieDetailDefaultLocalDataSource()
+        return MovieDetailRepoCacheDecorator(remoteDataSource: repo, cache: cache)
     }()
     
-    init(movie: Movie, movieDetailCache: MovieDetailCache) {
+    init(movie: Movie, movieDetailCache: MovieDetailLocalDataSource) {
         self.movie = movie
         self.movieDetail = MovieDetail()
-        movieDetailRepo.cache = movieDetailCache
+        movieDetailRepo.localDataSource = movieDetailCache
     }
     
     func movieAvatar() -> URL? {
-         return URL(string: movieDetail.imageURL ?? "")
+         return URL(string: movieDetail.imageURL)
     }
     
     func numberOfInfoDetails() -> Int {

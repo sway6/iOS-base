@@ -10,7 +10,7 @@ import Foundation
 import Alamofire
 import RxSwift
 
-class MovieDefaultRepository: MovieRepository {
+class MovieDefaultRemoteDataSource: MovieRemoteDataSource {
     func getAll() -> [Movie] {
         return []
     }

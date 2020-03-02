@@ -1,5 +1,5 @@
 //
-//  MovieRepository.swift
+//  MovieRemoteDataSource.swift
 //  Movie
 //
 //  Created by Bai xinrui on 2/28/20.
@@ -10,7 +10,7 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-protocol MovieRepository {
+protocol MovieRemoteDataSource {
     func getAll() -> [Movie]
     func get(identifier: String) -> Single<[Movie]>
 }

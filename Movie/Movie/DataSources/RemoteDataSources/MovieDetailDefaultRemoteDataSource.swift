@@ -9,7 +9,7 @@
 import Foundation
 import Alamofire
 
-class MovieDetailDefaultRepository: MovieDetailRepository {
+class MovieDetailDefaultRemoteDataSource: MovieDetailRemoteDataSource {
     func getAll() -> [MovieDetail] {
         return []
     }

@@ -9,7 +9,7 @@
 import Foundation
 import RxSwift
 
-class MovieDefaultCache: MovieCache {
+class MovieDefaultLocalDataSource: MovieLocalDataSource {
     var cache = [String: [Movie]]()
     
     func get(id: String) -> Single<[Movie]> {

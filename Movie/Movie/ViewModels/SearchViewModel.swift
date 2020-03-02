@@ -13,16 +13,16 @@ import RxSwift
 class SearchViewModel {
     weak var delegate: SearchViewModelDelegate?
     var movies = [Movie]()
-    var movieDetailCache: MovieDetailCache
+    var movieDetailCache: MovieDetailLocalDataSource
     let disposeBag = DisposeBag()
     
-    lazy var movieRepo: MovieRepository = {
-        let repo = MovieDefaultRepository()
-        let cache = MovieDefaultCache()
-        return MovieRepoCacheDecorator(inner: repo, cache: cache)
+    lazy var movieRepo: MovieRemoteDataSource = {
+        let repo = MovieDefaultRemoteDataSource()
+        let cache = MovieDefaultLocalDataSource()
+        return MovieRepoCacheDecorator(remoteDataSource: repo, cache: cache)
     }()
     
-    init(movieDetailCache: MovieDetailCache) {
+    init(movieDetailCache: MovieDetailLocalDataSource) {
         self.movieDetailCache = movieDetailCache
     }
     
@@ -53,7 +53,7 @@ class SearchViewModel {
         .disposed(by: disposeBag)
     }
     
-    func getMovieDetailsCache() -> MovieDetailCache {
+    func getMovieDetailsCache() -> MovieDetailLocalDataSource {
         return movieDetailCache
     }
 }

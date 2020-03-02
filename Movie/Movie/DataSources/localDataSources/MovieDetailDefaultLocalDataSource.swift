@@ -8,7 +8,7 @@
 
 import Foundation
 
-class MovieDetailDefaultCache: MovieDetailCache {
+class MovieDetailDefaultLocalDataSource: MovieDetailLocalDataSource {
     var cache = [String: MovieDetail]()
     
     func get(id: String) -> MovieDetail? {

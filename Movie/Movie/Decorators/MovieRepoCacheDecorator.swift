@@ -10,12 +10,13 @@ import Foundation
 import RxSwift
 
 class MovieRepoCacheDecorator: MovieDecorator {
-    var inner: MovieRepository
-    var cache: MovieCache
+    var remoteDataSource: MovieRemoteDataSource
+    var localDataSource: MovieLocalDataSource
     
-    init(inner: MovieRepository, cache: MovieCache) {
-        self.inner = inner
-        self.cache = cache
+    init(remoteDataSource: MovieRemoteDataSource,
+         cache: MovieLocalDataSource) {
+        self.remoteDataSource = remoteDataSource
+        self.localDataSource = cache
     }
     
     func getAll() -> [Movie] {
@@ -23,15 +24,15 @@ class MovieRepoCacheDecorator: MovieDecorator {
     }
     
     func get(identifier: String) -> Single<[Movie]> {
-        if cache.isCacheValid(for: identifier) {
-            return cache.get(id: identifier)
+        if localDataSource.isCacheValid(for: identifier) {
+            return localDataSource.get(id: identifier)
         } else {
-            return inner.get(identifier: identifier)
+            return remoteDataSource.get(identifier: identifier)
                 .do(onSuccess:{ [weak self] bunchOfMovies in
                     guard let self = self else {
                         return
                     }
-                    self.cache.store(content: bunchOfMovies, for: identifier)
+                    self.localDataSource.store(content: bunchOfMovies, for: identifier)
                 })
         }
     }

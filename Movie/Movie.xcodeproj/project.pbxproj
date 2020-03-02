@@ -32,6 +32,12 @@
 		DC65A11D240AB3B1000C73E8 /* MovieDetailDefaultCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC65A11C240AB3B1000C73E8 /* MovieDetailDefaultCache.swift */; };
 		DC65A11F240AB7D3000C73E8 /* MovieDetailDecorator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC65A11E240AB7D3000C73E8 /* MovieDetailDecorator.swift */; };
 		DC65A121240AB804000C73E8 /* MovieDecorator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC65A120240AB804000C73E8 /* MovieDecorator.swift */; };
+		DC65A123240AE421000C73E8 /* SearchViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC65A122240AE421000C73E8 /* SearchViewModelTest.swift */; };
+		DC65A136240AE4FA000C73E8 /* MockMovieRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC65A135240AE4FA000C73E8 /* MockMovieRepository.swift */; };
+		DC65A138240AE6EE000C73E8 /* MockMovieDetailRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC65A137240AE6EE000C73E8 /* MockMovieDetailRepository.swift */; };
+		DC65A13A240AE7C4000C73E8 /* MockMovieCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC65A139240AE7C4000C73E8 /* MockMovieCache.swift */; };
+		DC65A13C240AEAC3000C73E8 /* MockMovieDetailCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC65A13B240AEAC3000C73E8 /* MockMovieDetailCache.swift */; };
+		DC65A13E240AEE8F000C73E8 /* MovieDetailViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC65A13D240AEE8F000C73E8 /* MovieDetailViewModelTest.swift */; };
 		DC77D6D42404B22600A98E78 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC77D6D32404B22600A98E78 /* Movie.swift */; };
 		DC77D6D62404B2D600A98E78 /* MovieDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC77D6D52404B2D600A98E78 /* MovieDetail.swift */; };
 		DC77D6D82404B31400A98E78 /* MovieDetailViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC77D6D72404B31400A98E78 /* MovieDetailViewModelDelegate.swift */; };
@@ -99,6 +105,12 @@
 		DC65A11C240AB3B1000C73E8 /* MovieDetailDefaultCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailDefaultCache.swift; sourceTree = "<group>"; };
 		DC65A11E240AB7D3000C73E8 /* MovieDetailDecorator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailDecorator.swift; sourceTree = "<group>"; };
 		DC65A120240AB804000C73E8 /* MovieDecorator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieDecorator.swift; sourceTree = "<group>"; };
+		DC65A122240AE421000C73E8 /* SearchViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModelTest.swift; sourceTree = "<group>"; };
+		DC65A135240AE4FA000C73E8 /* MockMovieRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockMovieRepository.swift; sourceTree = "<group>"; };
+		DC65A137240AE6EE000C73E8 /* MockMovieDetailRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockMovieDetailRepository.swift; sourceTree = "<group>"; };
+		DC65A139240AE7C4000C73E8 /* MockMovieCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockMovieCache.swift; sourceTree = "<group>"; };
+		DC65A13B240AEAC3000C73E8 /* MockMovieDetailCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockMovieDetailCache.swift; sourceTree = "<group>"; };
+		DC65A13D240AEE8F000C73E8 /* MovieDetailViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailViewModelTest.swift; sourceTree = "<group>"; };
 		DC77D6D32404B22600A98E78 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		DC77D6D52404B2D600A98E78 /* MovieDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetail.swift; sourceTree = "<group>"; };
 		DC77D6D72404B31400A98E78 /* MovieDetailViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailViewModelDelegate.swift; sourceTree = "<group>"; };
@@ -207,6 +219,9 @@
 		DC03734C2400BC1F000181BE /* MovieTests */ = {
 			isa = PBXGroup;
 			children = (
+				DC65A134240AE4D1000C73E8 /* Mocks */,
+				DC65A122240AE421000C73E8 /* SearchViewModelTest.swift */,
+				DC65A13D240AEE8F000C73E8 /* MovieDetailViewModelTest.swift */,
 				DC03734D2400BC1F000181BE /* MovieTests.swift */,
 				DC03734F2400BC1F000181BE /* Info.plist */,
 			);
@@ -272,6 +287,17 @@
 				DC65A118240AB239000C73E8 /* MovieDetailRepoCacheDecorator.swift */,
 			);
 			path = Decorators;
+			sourceTree = "<group>";
+		};
+		DC65A134240AE4D1000C73E8 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				DC65A135240AE4FA000C73E8 /* MockMovieRepository.swift */,
+				DC65A137240AE6EE000C73E8 /* MockMovieDetailRepository.swift */,
+				DC65A139240AE7C4000C73E8 /* MockMovieCache.swift */,
+				DC65A13B240AEAC3000C73E8 /* MockMovieDetailCache.swift */,
+			);
+			path = Mocks;
 			sourceTree = "<group>";
 		};
 		DC77D6D22404B20A00A98E78 /* Models */ = {
@@ -545,6 +571,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DC65A13E240AEE8F000C73E8 /* MovieDetailViewModelTest.swift in Sources */,
+				DC65A13C240AEAC3000C73E8 /* MockMovieDetailCache.swift in Sources */,
+				DC65A136240AE4FA000C73E8 /* MockMovieRepository.swift in Sources */,
+				DC65A138240AE6EE000C73E8 /* MockMovieDetailRepository.swift in Sources */,
+				DC65A13A240AE7C4000C73E8 /* MockMovieCache.swift in Sources */,
+				DC65A123240AE421000C73E8 /* SearchViewModelTest.swift in Sources */,
 				DC03734E2400BC1F000181BE /* MovieTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

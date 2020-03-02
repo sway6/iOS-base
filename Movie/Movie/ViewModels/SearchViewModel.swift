@@ -11,7 +11,7 @@ import Alamofire
 
 class SearchViewModel {
     weak var delegate: SearchViewModelDelegate?
-    private var movies = [Movie]()
+    var movies = [Movie]()
     var movieDetailCache: MovieDetailCache
     
     lazy var movieRepo: MovieRepository = {

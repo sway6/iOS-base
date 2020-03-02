@@ -195,22 +195,13 @@
 		DC0373342400BC1E000181BE /* Movie */ = {
 			isa = PBXGroup;
 			children = (
-				DC6A4422240CD51500DB72CB /* DataSources */,
-				DC65A1092409F4F5000C73E8 /* Decorators */,
-				DC77D6F32406091500A98E78 /* Extensions */,
-				DC77D6D92404BF7D00A98E78 /* TableViewCells */,
-				DC77D6D22404B20A00A98E78 /* Models */,
-				DCBD01102404AE4300F04DF6 /* Delegates */,
-				DCBD00FF2403386600F04DF6 /* ViewModels */,
-				DCBD00FE2403385B00F04DF6 /* Controllers */,
-				DC03736B2401D318000181BE /* Constants */,
-				DC0373662401D0E8000181BE /* EndPoints */,
-				DC0373352400BC1F000181BE /* AppDelegate.swift */,
-				DC0373392400BC1F000181BE /* Main.storyboard */,
-				DC03733F2400BC1F000181BE /* Assets.xcassets */,
-				DC0373412400BC1F000181BE /* LaunchScreen.storyboard */,
 				DC0373442400BC1F000181BE /* Info.plist */,
-				DC03733C2400BC1F000181BE /* Movie.xcdatamodeld */,
+				DC0B0684240CD9290009A02E /* UserInterface */,
+				DC0B0685240CD96C0009A02E /* Presentation */,
+				DC0B0686240CD9C00009A02E /* Domain */,
+				DCB4129A240CD858004BE811 /* Data */,
+				DC03736B2401D318000181BE /* Constants */,
+				DC0B0687240CD9F40009A02E /* AppAssets */,
 			);
 			path = Movie;
 			sourceTree = "<group>";
@@ -253,6 +244,45 @@
 				DC03736C2401D345000181BE /* Constants.swift */,
 			);
 			path = Constants;
+			sourceTree = "<group>";
+		};
+		DC0B0684240CD9290009A02E /* UserInterface */ = {
+			isa = PBXGroup;
+			children = (
+				DC77D6F32406091500A98E78 /* Extensions */,
+				DC77D6D92404BF7D00A98E78 /* TableViewCells */,
+				DCBD00FE2403385B00F04DF6 /* Controllers */,
+			);
+			path = UserInterface;
+			sourceTree = "<group>";
+		};
+		DC0B0685240CD96C0009A02E /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				DCBD00FF2403386600F04DF6 /* ViewModels */,
+				DCBD01102404AE4300F04DF6 /* Delegates */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		DC0B0686240CD9C00009A02E /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				DC65A1092409F4F5000C73E8 /* Decorators */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		DC0B0687240CD9F40009A02E /* AppAssets */ = {
+			isa = PBXGroup;
+			children = (
+				DC03733F2400BC1F000181BE /* Assets.xcassets */,
+				DC03733C2400BC1F000181BE /* Movie.xcdatamodeld */,
+				DC0373392400BC1F000181BE /* Main.storyboard */,
+				DC0373412400BC1F000181BE /* LaunchScreen.storyboard */,
+				DC0373352400BC1F000181BE /* AppDelegate.swift */,
+			);
+			path = AppAssets;
 			sourceTree = "<group>";
 		};
 		DC65A0F92409ECAD000C73E8 /* RemoteDataSources */ = {
@@ -302,8 +332,8 @@
 		DC6A4422240CD51500DB72CB /* DataSources */ = {
 			isa = PBXGroup;
 			children = (
-				DC65A0F92409ECAD000C73E8 /* RemoteDataSources */,
 				DC65A1022409F174000C73E8 /* localDataSources */,
+				DC65A0F92409ECAD000C73E8 /* RemoteDataSources */,
 			);
 			path = DataSources;
 			sourceTree = "<group>";
@@ -334,6 +364,16 @@
 				DC77D6F42406092B00A98E78 /* UIImageViewExtenison.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		DCB4129A240CD858004BE811 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				DC6A4422240CD51500DB72CB /* DataSources */,
+				DC77D6D22404B20A00A98E78 /* Models */,
+				DC0373662401D0E8000181BE /* EndPoints */,
+			);
+			path = Data;
 			sourceTree = "<group>";
 		};
 		DCBD00FE2403385B00F04DF6 /* Controllers */ = {

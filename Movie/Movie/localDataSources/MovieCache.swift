@@ -7,8 +7,10 @@
 //
 
 import Foundation
+import RxSwift
 
 protocol MovieCache {
-    func get(id: String) -> [Movie]?
+    func get(id: String) -> Single<[Movie]>
     func store(content: [Movie], for id: String)
+    func isCacheValid(for id: String) -> Bool
 }

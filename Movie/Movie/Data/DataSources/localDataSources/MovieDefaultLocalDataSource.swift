@@ -14,11 +14,7 @@ class MovieDefaultLocalDataSource: MovieLocalDataSource {
     
     func get(id: String) -> Single<[Movie]> {
         let bunchOfMovies = cache[id] ?? []
-        return Single<[Movie]>.create{ single in
-            print("hit movie cache success")
-            single(.success(bunchOfMovies))
-            return Disposables.create()
-        }
+        return Single.just(bunchOfMovies)
     }
     
     func store(content: [Movie], for id: String) {

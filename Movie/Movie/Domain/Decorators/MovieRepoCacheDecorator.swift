@@ -25,6 +25,7 @@ class MovieRepoCacheDecorator: MovieDecorator {
     
     func get(identifier: String) -> Single<[Movie]> {
         if localDataSource.isCacheValid(for: identifier) {
+            print("hit movie list cache")
             return localDataSource.get(id: identifier)
         } else {
             return remoteDataSource.get(identifier: identifier)

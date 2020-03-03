@@ -7,41 +7,46 @@
 //
 
 import Foundation
-import Alamofire
+import RxSwift
+import RxAlamofire
 
 class MovieDetailDefaultRemoteDataSource: MovieDetailRemoteDataSource {
     func getAll() -> [MovieDetail] {
         return []
     }
     
-    func get(identifier: String, completion: @escaping (MovieDetail) -> Void) {
+    func get(identifier: String) -> Single<MovieDetail> {
         let movieDetailEndPoint = GetMovieDetail(movieID: identifier)
         var movieDetail = MovieDetail()
-        
-        AF.request(movieDetailEndPoint.getPath(), method: .get)
-            .responseJSON  { [weak self] response in
-                guard let self = self else {
-                    return
-                }
-                if let status = response.response?.statusCode {
+        return
+            RxAlamofire.requestJSON(.get, movieDetailEndPoint.getPath())
+                .asSingle()
+                .map { [weak self] (r, json) -> MovieDetail in
+                    guard let self = self else {
+                        return MovieDetail()
+                    }
+                    let status = r.statusCode
+                    
                     switch(status){
                     case 200:
                         print("fetch movies success")
                     default:
                         print("error with response status: \(status)")
                     }
-                }
-                // decode JSON value
-                if let jsonData = response.data {
-                    do {
-                        movieDetail = try JSONDecoder().decode(MovieDetail.self, from: jsonData)
-                    } catch {
-                        print("fail to decode MivesDetail from http response")
+                    
+                    // decode JSON value
+                    guard let jsonDict = json as? [String : Any] else {
+                        return MovieDetail()
                     }
-                }
-                
-                completion(movieDetail)
+                    
+                    do {
+                        let jsonData = try JSONSerialization.data(withJSONObject: jsonDict, options: [])
+                        let movieDetail = try JSONDecoder().decode(MovieDetail.self, from: jsonData)
+                        return movieDetail
+                    } catch {
+                        print("fail to decode Mives from http response")
+                    }
+                    return movieDetail
         }
-        
     }
 }

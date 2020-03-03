@@ -7,8 +7,9 @@
 //
 
 import Foundation
+import RxSwift
 
 protocol MovieDetailRemoteDataSource {
     func getAll() -> [MovieDetail]
-    func get(identifier: String, completion: @escaping (MovieDetail) -> Void)
+    func get(identifier: String) -> Single<MovieDetail>
 }

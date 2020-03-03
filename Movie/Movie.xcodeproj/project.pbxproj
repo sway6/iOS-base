@@ -289,8 +289,8 @@
 			isa = PBXGroup;
 			children = (
 				DC65A0FC2409EE7D000C73E8 /* MovieRemoteDataSource.swift */,
-				DC65A0FE2409EFBC000C73E8 /* MovieDetailRemoteDataSource.swift */,
 				DC65A112240AAB36000C73E8 /* MovieDefaultRemoteDataSource.swift */,
+				DC65A0FE2409EFBC000C73E8 /* MovieDetailRemoteDataSource.swift */,
 				DC65A114240AAB50000C73E8 /* MovieDetailDefaultRemoteDataSource.swift */,
 			);
 			path = RemoteDataSources;

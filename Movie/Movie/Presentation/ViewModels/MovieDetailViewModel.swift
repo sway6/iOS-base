@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import Alamofire
 import RxSwift
 import RxCocoa
 
@@ -15,6 +14,7 @@ class MovieDetailViewModel {
     weak var delegate: MovieDetailViewModelDelegate?
     private var movie: Movie
     private var movieDetail: MovieDetail
+    let disposeBag = DisposeBag()
     
     lazy var movieDetailRepo: MovieDetailRepoCacheDecorator = {
         let repo = MovieDetailDefaultRemoteDataSource()
@@ -45,19 +45,18 @@ class MovieDetailViewModel {
     }
     
     func fetchMovieDetail() {
-        movieDetailRepo.get(identifier: "\(movie.id)") { [weak self] movieDetail in
-            guard let self = self else {
-                return
-            }
-            self.movieDetail = movieDetail
-            
-            // refresh the movie detail UI
-            DispatchQueue.main.async {
-                guard let delegate = self.delegate else {
-                    return
-                }
-                delegate.movieDetailFetchingCompleted()
-            }
-        }
+        movieDetailRepo.get(identifier: "\(movie.id)")
+            .observeOn(MainScheduler.instance)
+            .subscribe(
+                onSuccess: { [weak self] movieDetail in
+                    guard let self = self else { return }
+                    guard let delegate = self.delegate else { return }
+                    self.movieDetail = movieDetail
+                    delegate.movieDetailFetchingCompleted()
+                },
+                onError: { _ in
+                    print("search keyword faild on searchViewModel")
+                })
+        .disposed(by: disposeBag)
     }
 }

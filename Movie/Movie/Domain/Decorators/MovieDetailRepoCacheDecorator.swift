@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import RxSwift
 
 class MovieDetailRepoCacheDecorator: MovieDetailDecorator {
     var remoteDataSource: MovieDetailRemoteDataSource
@@ -21,19 +22,19 @@ class MovieDetailRepoCacheDecorator: MovieDetailDecorator {
         return []
     }
     
-    func get(identifier: String, completion: @escaping (MovieDetail) -> Void) {
-        guard let cachedMovieDetail = localDataSource.get(id: identifier) else {
-            return remoteDataSource.get(identifier: identifier) { [weak self] movieDetail in
-                guard let self = self else {
-                    return
-                }
-                self.localDataSource.store(content: movieDetail, for: identifier)
-                completion(movieDetail)
-            }
+    func get(identifier: String) -> Single<MovieDetail> {
+        if localDataSource.isCacheValid(for: identifier) {
+            print("hit movie detail cache")
+            return localDataSource.get(id: identifier)
+        } else {
+            return remoteDataSource.get(identifier: identifier)
+                .do(onSuccess:{ [weak self] movieDetail in
+                    guard let self = self else {
+                        return
+                    }
+                    self.localDataSource.store(content: movieDetail, for: identifier)
+                })
         }
-        
-        print("hit movie detail cache")
-        completion(cachedMovieDetail)
     }
     
 }

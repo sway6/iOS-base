@@ -8,15 +8,20 @@
 
 import Foundation
 @testable import Movie
+@testable import RxSwift
 
-class MockMovieDetailCache: MovieDetailCache {
+class MockMovieDetailCache: MovieDetailLocalDataSource {
     var testDict: [String: MovieDetail] = [:]
     
-    func get(id: String) -> MovieDetail? {
-        return testDict[id]
+    func get(id: String) -> Single<MovieDetail> {
+        return Single.just(MovieDetail())
     }
     
     func store(content: MovieDetail, for id: String) {
         testDict[id] = content
+    }
+    
+    func isCacheValid(for id: String) -> Bool {
+        return true
     }
 }

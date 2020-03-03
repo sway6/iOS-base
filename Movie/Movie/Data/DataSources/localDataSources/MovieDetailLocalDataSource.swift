@@ -7,8 +7,10 @@
 //
 
 import Foundation
+import RxSwift
 
 protocol MovieDetailLocalDataSource {
-    func get(id: String) -> MovieDetail?
+    func get(id: String) -> Single<MovieDetail>
     func store(content: MovieDetail, for id: String)
+    func isCacheValid(for id: String) -> Bool
 }

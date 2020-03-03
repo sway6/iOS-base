@@ -7,15 +7,21 @@
 //
 
 import Foundation
+import RxSwift
 
 class MovieDetailDefaultLocalDataSource: MovieDetailLocalDataSource {
     var cache = [String: MovieDetail]()
     
-    func get(id: String) -> MovieDetail? {
-        return cache[id]
+    func get(id: String) -> Single<MovieDetail> {
+        let movieDetail = cache[id] ?? MovieDetail()
+        return Single.just(movieDetail)
     }
     
     func store(content: MovieDetail, for id: String) {
         cache[id] = content
+    }
+    
+    func isCacheValid(for id: String) -> Bool {
+        return cache[id] != nil
     }
 }

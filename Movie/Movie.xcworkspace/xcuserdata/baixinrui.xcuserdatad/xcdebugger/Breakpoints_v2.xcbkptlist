@@ -66,38 +66,6 @@
             endingLineNumber = "14"
             landmarkName = "load(url:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "B2E4A622-1447-46E0-B4A8-1B121AB1A7EF - fd7f7f63624e9426"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(extension in Movie):__C.UIImageView.load(url: Foundation.URL) -&gt; ()"
-                  moduleName = "Movie"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/baixinrui/Documents/github/iOS-base/Movie/Movie/Extensions/UIImageViewExtenison.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "14"
-                  endingLineNumber = "14"
-                  offsetFromSymbolStart = "238">
-               </Location>
-               <Location
-                  uuid = "B2E4A622-1447-46E0-B4A8-1B121AB1A7EF - b8b56ff52a7413d2"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 () -&gt; () in (extension in Movie):__C.UIImageView.load(url: Foundation.URL) -&gt; ()"
-                  moduleName = "Movie"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/baixinrui/Documents/github/iOS-base/Movie/Movie/Extensions/UIImageViewExtenison.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "13"
-                  endingLineNumber = "13"
-                  offsetFromSymbolStart = "214">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -113,6 +81,38 @@
             startingLineNumber = "18"
             endingLineNumber = "18"
             landmarkName = "load(url:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "35D82D20-DAD4-4C75-822D-4115BE1A99B0"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Movie/Data/DataSources/RemoteDataSources/MovieDefaultRemoteDataSource.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "38"
+            endingLineNumber = "38"
+            landmarkName = "get(identifier:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "FF538F58-AE4F-4CE0-818F-ACD1D6C1FF6A"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Movie/Data/DataSources/RemoteDataSources/MovieDetailDefaultRemoteDataSource.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "38"
+            endingLineNumber = "38"
+            landmarkName = "get(identifier:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

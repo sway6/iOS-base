@@ -7,8 +7,8 @@
 //
 
 import Foundation
-import Alamofire
 import RxSwift
+import RxAlamofire
 
 class MovieDefaultRemoteDataSource: MovieRemoteDataSource {
     func getAll() -> [Movie] {
@@ -17,38 +17,39 @@ class MovieDefaultRemoteDataSource: MovieRemoteDataSource {
     
     func get(identifier: String) -> Single<[Movie]> {
         let movieEndPoint = FetchMovieGroups(keyword: identifier)
-        var bunchOfMovies = [Movie]()
-        
-        return Single<[Movie]>.create{ single in
-            // Fetch movies based on keywords
-            AF.request(movieEndPoint.getPath(), method: .get)
-                .responseJSON  { response in
-                    if let status = response.response?.statusCode {
-                        switch(status){
-                        case 200:
-                            print("fetch movies success")
-                        default:
-                            print("error with response status: \(status)")
-                        }
-                    }
-                    // decode JSON value
-                    if let result = response.value {
-                        let jsonDict = result as! NSDictionary
-                        guard let jsonArray = jsonDict["results"] as? NSArray else {
-                            return
-                        }
-                        
-                        do {
-                            let jsonData = try JSONSerialization.data(withJSONObject: jsonArray, options: [])
-                            bunchOfMovies = try JSONDecoder().decode([Movie].self, from: jsonData)
-                        } catch {
-                            print("fail to decode Mives from http response")
-                        }
+        return
+            RxAlamofire
+                .requestJSON(.get, movieEndPoint.getPath())
+                .asSingle()
+                .map { [weak self] (r, json) -> [Movie] in
+                    guard let self = self else {
+                        return [Movie]()
                     }
                     
-                    single(.success(bunchOfMovies))
-            }
-            return Disposables.create()
+                    let status = r.statusCode
+                    switch(status) {
+                    case 200:
+                        print("fetch movies success")
+                    default:
+                        print("error with response status: \(status)")
+                    }
+                    
+                    // decode JSON value
+                    guard let jsonDict = json as? [String : Any] else {
+                        return [Movie]()
+                    }
+                    guard let jsonArray = jsonDict["results"] as? [Any] else {
+                        return [Movie]()
+                    }
+                    
+                    do {
+                        let jsonData = try JSONSerialization.data(withJSONObject: jsonArray, options: [])
+                        let bunchOfMovies = try JSONDecoder().decode([Movie].self, from: jsonData)
+                        return bunchOfMovies
+                    } catch {
+                        print("fail to decode Mives from http response")
+                    }
+                    return [Movie]()
         }
     }
 }
